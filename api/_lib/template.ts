@@ -11,16 +11,11 @@ const rglr = readFileSync(`${__dirname}/../_fonts/Raleway-Regular.woff2`).toStri
 const bold = readFileSync(`${__dirname}/../_fonts/Raleway-SemiBold.woff2`).toString('base64');
 const nmbr = readFileSync(`${__dirname}/../_fonts/Montserrat-Regular.woff2`).toString('base64');
 
-function getCss(theme: string, fontSize: string) {
+function getCss(fontSize: string) {
     let background = 'white';
     let foreground = 'black';
     let radial = 'lightgray';
 
-    if (theme === 'dark') {
-        background = 'black';
-        foreground = 'white';
-        radial = 'dimgray';
-    }
     return `
     @font-face {
         font-family: 'Raleway';
@@ -104,14 +99,14 @@ function getCss(theme: string, fontSize: string) {
 }
 
 export function getHtml(parsedReq: ParsedRequest) {
-    const { text, theme, md, fontSize, images, widths, heights } = parsedReq;
+    const { text, md, fontSize, images, widths, heights } = parsedReq;
     return `<!DOCTYPE html>
 <html>
     <meta charset="utf-8">
     <title>Generated Image</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        ${getCss(theme, fontSize)}
+        ${getCss(fontSize)}
     </style>
     <body>
         <div>

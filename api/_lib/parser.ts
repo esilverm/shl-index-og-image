@@ -1,6 +1,6 @@
 import { IncomingMessage } from 'http';
 import { parse } from 'url';
-import { ParsedRequest, Theme } from './types';
+import { ParsedRequest } from './types';
 
 export function parseRequest(req: IncomingMessage) {
     console.log('HTTP ' + req.url);
@@ -29,7 +29,6 @@ export function parseRequest(req: IncomingMessage) {
     const parsedRequest: ParsedRequest = {
         fileType: extension === 'jpeg' ? extension : 'png',
         text: decodeURIComponent(text),
-        theme: theme === 'dark' ? 'dark' : 'light',
         md: md === '1' || md === 'true',
         fontSize: fontSize || '96px',
         bgColor: bgColor as 'string' || 'white',
@@ -37,7 +36,7 @@ export function parseRequest(req: IncomingMessage) {
         widths: getArray(widths),
         heights: getArray(heights),
     };
-    parsedRequest.images = getDefaultImages(parsedRequest.images, parsedRequest.theme);
+    parsedRequest.images = getDefaultImages(parsedRequest.images);
     return parsedRequest;
 }
 
@@ -51,10 +50,8 @@ function getArray(stringOrArray: string[] | string | undefined): string[] {
     }
 }
 
-function getDefaultImages(images: string[], theme: Theme): string[] {
-    const defaultImage = theme === 'light'
-        ? 'https://index.simulationhockey.com/league_logos/SHL.svg'
-        : 'https://index.simulationhockey.com/league_logos/SHL.svg';
+function getDefaultImages(images: string[]): string[] {
+    const defaultImage = 'https://index.simulationhockey.com/league_logos/SHL.svg';
 
     if (!images || !images[0]) {
         return [defaultImage];
