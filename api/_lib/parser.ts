@@ -5,7 +5,7 @@ import { ParsedRequest, Theme } from './types';
 export function parseRequest(req: IncomingMessage) {
     console.log('HTTP ' + req.url);
     const { pathname, query } = parse(req.url || '/', true);
-    const { fontSize, images, widths, heights, theme, md } = (query || {});
+    const { fontSize, images, widths, heights, theme, md, bgColor } = (query || {});
 
     if (Array.isArray(fontSize)) {
         throw new Error('Expected a single fontSize');
@@ -32,6 +32,7 @@ export function parseRequest(req: IncomingMessage) {
         theme: theme === 'dark' ? 'dark' : 'light',
         md: md === '1' || md === 'true',
         fontSize: fontSize || '96px',
+        bgColor: bgColor as 'string' || 'white',
         images: getArray(images),
         widths: getArray(widths),
         heights: getArray(heights),
@@ -52,13 +53,13 @@ function getArray(stringOrArray: string[] | string | undefined): string[] {
 
 function getDefaultImages(images: string[], theme: Theme): string[] {
     const defaultImage = theme === 'light'
-        ? 'https://assets.vercel.com/image/upload/front/assets/design/vercel-triangle-black.svg'
-        : 'https://assets.vercel.com/image/upload/front/assets/design/vercel-triangle-white.svg';
+        ? 'https://index.simulationhockey.com/league_logos/SHL.svg'
+        : 'https://index.simulationhockey.com/league_logos/SHL.svg';
 
     if (!images || !images[0]) {
         return [defaultImage];
     }
-    if (!images[0].startsWith('https://assets.vercel.com/') && !images[0].startsWith('https://assets.zeit.co/')) {
+    if (!images[0].startsWith('https://index.simulationhockey.com/') && !images[0].startsWith('https://index.simulationhockey.com/')) {
         images[0] = defaultImage;
     }
     return images;

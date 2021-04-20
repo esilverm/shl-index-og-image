@@ -120,6 +120,13 @@ const Toast = ({ show, message }: ToastProps) => {
     );
 }
 
+// const themeTypeOptions: DropdownOption[] = [
+//     { text: 'League', value: 'league'},
+//     { text: 'Player', value: 'player'},
+//     { text: 'Team', value: 'team'},
+//     { text: 'Game', value: 'game'},
+// ];
+
 const themeOptions: DropdownOption[] = [
     { text: 'Light', value: 'light' },
     { text: 'Dark', value: 'dark' },
@@ -142,16 +149,17 @@ const markdownOptions: DropdownOption[] = [
 ];
 
 const imageLightOptions: DropdownOption[] = [
-    { text: 'Vercel', value: 'https://assets.vercel.com/image/upload/front/assets/design/vercel-triangle-black.svg' },
-    { text: 'Next.js', value: 'https://assets.vercel.com/image/upload/front/assets/design/nextjs-black-logo.svg' },
-    { text: 'Hyper', value: 'https://assets.vercel.com/image/upload/front/assets/design/hyper-color-logo.svg' },
+    { text: 'SHL', value: 'https://index.simulationhockey.com/league_logos/SHL.svg' },
+    { text: 'SMJHL', value: 'https://index.simulationhockey.com/league_logos/SMJHL.svg' },
+    { text: 'IIHF', value: 'https://index.simulationhockey.com/league_logos/IIHF.svg' },
+    { text: 'WJC', value: 'https://index.simulationhockey.com/league_logos/WJC.svg' },
 ];
 
 const imageDarkOptions: DropdownOption[] = [
-
-    { text: 'Vercel', value: 'https://assets.vercel.com/image/upload/front/assets/design/vercel-triangle-white.svg' },
-    { text: 'Next.js', value: 'https://assets.vercel.com/image/upload/front/assets/design/nextjs-white-logo.svg' },
-    { text: 'Hyper', value: 'https://assets.vercel.com/image/upload/front/assets/design/hyper-bw-logo.svg' },
+    { text: 'SHL', value: 'https://index.simulationhockey.com/league_logos/SHL.svg' },
+    { text: 'SMJHL', value: 'https://index.simulationhockey.com/league_logos/SMJHL.svg' },
+    { text: 'IIHF', value: 'https://index.simulationhockey.com/league_logos/IIHF.svg' },
+    { text: 'WJC', value: 'https://index.simulationhockey.com/league_logos/WJC.svg' },
 ];
 
 const widthOptions = [
@@ -163,6 +171,7 @@ const widthOptions = [
     { text: '250', value: '250' },
     { text: '300', value: '300' },
     { text: '350', value: '350' },
+    { text: '400', value: '400' },
 ];
 
 const heightOptions = [
@@ -174,6 +183,7 @@ const heightOptions = [
     { text: '250', value: '250' },
     { text: '300', value: '300' },
     { text: '350', value: '350' },
+    { text: '400', value: '400' },
 ];
 
 interface AppState extends ParsedRequest {
